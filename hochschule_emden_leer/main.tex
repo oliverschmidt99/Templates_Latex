@@ -1,0 +1,189 @@
+\documentclass[11pt, a4paper]{article} % Dokumentenklasse: Artikel, 11pt Schriftgröße, A4-Papier
+
+%-------------------------------------------------------------------------------
+% GRUNDEINSTELLUNGEN: Seitenlayout, Sprache, Kodierung, Schriftart
+%-------------------------------------------------------------------------------
+\usepackage[a4paper,
+            left=22mm, right=22mm,
+            top=0.3cm, bottom=1cm,
+            includehead, includefoot,
+            headheight=3cm
+            ]{geometry} % Zur Einstellung der Seitengeometrie
+\usepackage[ngerman]{babel} % Deutsche Sprachanpassungen
+\usepackage[T1]{fontenc}    % Wählt die T1-Schriftkodierung
+\usepackage[utf8]{inputenc} % Erlaubt die direkte Eingabe von UTF-8 Zeichen
+\usepackage{lmodern}        % Lädt die Latin Modern Schriftart
+\usepackage{textcomp}       % Stellt zusätzliche Textsymbole bereit
+\usepackage{gensymb}        % Stellt generische Symbole bereit
+
+%-------------------------------------------------------------------------------
+% MATHEMATIK
+%-------------------------------------------------------------------------------
+\usepackage{amsmath}        % Umfassende Erweiterungen für mathematische Formeln
+\usepackage{amssymb}        % Zusätzliche mathematische Symbole
+\usepackage{amsthm}         % Für Theorem-Umgebungen
+\usepackage{latexsym}       % (Oft von amssymb abgedeckt)
+\usepackage{derivative}     % Zum einfachen Setzen von Ableitungen
+% \usepackage{verbatim}
+
+%-------------------------------------------------------------------------------
+% GRAFIKEN & DIAGRAMME
+%-------------------------------------------------------------------------------
+\usepackage{graphicx}       % Zum Einbinden von externen Grafiken
+\usepackage{tikz}           % Mächtiges Paket zum Erstellen von Vektorgrafiken
+\usepackage{circuitikz}     % Erweiterung für TikZ zum Zeichnen von Schaltplänen
+\usepackage{subcaption}     % Ermöglicht Unterabbildungen und Untertabellen
+\usepackage{caption}        % Zum Anpassen von Abbildungs- und Tabellenbeschriftungen
+\usepackage{adjustbox}      % Zum Anpassen von Boxen
+\usepackage{eso-pic}        % Ermöglicht das Platzieren von Elementen im Hintergrund/Vordergrund
+
+%-------------------------------------------------------------------------------
+% TABELLEN
+%-------------------------------------------------------------------------------
+\usepackage{booktabs}       % Erzeugt optisch ansprechendere Tabellenlinien
+\usepackage{multirow}       % Ermöglicht das Verbinden von Zellen über mehrere Zeilen
+\usepackage{colortbl}       % Ermöglicht das Einfärben von Tabellenzellen
+
+%-------------------------------------------------------------------------------
+% LISTEN & AUFZÄHLUNGEN
+%-------------------------------------------------------------------------------
+\usepackage{enumitem}       % Erweiterte Anpassungsmöglichkeiten für Listen
+
+%-------------------------------------------------------------------------------
+% KOPF-/FUSSZEILE & ABSCHNITTSFORMATIERUNG
+%-------------------------------------------------------------------------------
+\usepackage{fancyhdr}       % Zur Gestaltung von benutzerdefinierten Kopf- und Fußzeilen
+\usepackage{lastpage}       % Stellt die Gesamtseitenzahl des Dokuments zur Verfügung
+\usepackage{sectsty}        % Einfache Möglichkeit zur Änderung der Schriftart von Abschnittsüberschriften
+\usepackage{titlesec}       % Erweiterte Kontrolle über das Aussehen von Abschnittsüberschriften
+\usepackage{titletoc}       % Erweiterte Kontrolle über das Aussehen des Inhaltsverzeichnisses
+\usepackage{lastpage}
+
+%-------------------------------------------------------------------------------
+% VERZEICHNISSE, REFERENZEN & LINKS
+%-------------------------------------------------------------------------------
+\usepackage{makeidx}        % Zur Erstellung eines Stichwortverzeichnisses (Index)
+                            % -> Nicht vergessen: makeindex nach LaTeX-Lauf ausführen!
+\makeindex                  % Index-Generierung aktivieren
+\usepackage[colorlinks=true,
+            linkcolor=blue,
+            citecolor=green,
+            urlcolor=magenta
+            ]{hyperref}     % Erzeugt klickbare Links im PDF
+                            % -> Sollte i.d.R. als eines der letzten Pakete geladen werden
+\usepackage{chngcntr}       % Zum Ändern der Zähler-Zurücksetzung
+
+%-------------------------------------------------------------------------------
+% SPEZIELLE FORMATIERUNGEN & HILFSPAKETE
+%-------------------------------------------------------------------------------
+\usepackage[normalem]{ulem} % Bietet u.a. durchgestrichenen und unterstrichenen Text
+\usepackage{calc}           % Ermöglicht Berechnungen innerhalb von Längenangaben
+\usepackage{pdfpages}       % Zum Einbinden ganzer Seiten aus externen PDF-Dateien
+\usepackage{blindtext}      % Zum Erzeugen von Blindtext und Beispiel-Dokumentstrukturen
+\usepackage{float}          % Verbesserte Kontrolle über Gleitumgebungen
+\usepackage{newfloat}       % Zum Definieren neuer Gleitumgebungstypen
+
+%-------------------------------------------------------------------------------
+% BENUTZERDEFINIERTE EINSTELLUNGEN & DEFINITIONEN
+%-------------------------------------------------------------------------------
+
+% Keine Einrückung am Absatzanfang
+\setlength{\parindent}{0em}
+
+% Setzt die Schriftart für alle Abschnittsüberschriften auf serifenlos
+\allsectionsfont{\sffamily}
+
+% Definition des Hintergrundbild-Befehls
+\newcommand\BackgroundWave{%
+    \put(0,0){%
+        \parbox[b][\paperheight]{\paperwidth}{%
+            \vfill %
+            \centering %
+            \vspace{12.0cm} %
+            \includegraphics[width=\paperwidth]{logo/hsel-welle-grey}%
+            \vfill %
+        }%
+    }%
+}
+
+\usepackage{xcolor}
+\usepackage{mdframed}
+% Definiere eine neue mdframed-Umgebung namens 'hinweisbox'
+\newmdenv[
+    linecolor=red,
+    linewidth=1pt,
+    frametitle=Hinweis,
+    frametitlebackgroundcolor=red,
+    frametitlefont=\color{white}\bfseries,
+    frametitlerule=true,
+    backgroundcolor=white,
+    roundcorner=2pt,
+]{hinweisbox}
+
+
+% Definition neuer Gleitumgebungen
+\DeclareFloatingEnvironment[
+    listname  = {Diagrammverzeichnis},
+    name      = Diagramm,
+    fileext   = lod,
+    placement = htp
+]{diagram}
+
+\DeclareFloatingEnvironment[
+    listname  = {Oszillogrammverzeichnis},
+    name      = Oszillogramm,
+    fileext   = loo,
+    placement = htp
+]{oszillo}
+
+%-------------------------------------------------------------------------------
+% GLOBALE DEFINITIONEN
+%-------------------------------------------------------------------------------
+\newcommand{\praktikumstitel}{Elektrische Antriebe – Praktikum}
+\newcommand{\semester}{Sommersemester 2025}
+\newcommand{\versuchsnummer}{Versuch 3}
+\newcommand{\versuchstitel}{Asynchronmaschine mit Schleifringläufer}
+\newcommand{\gruppe}{Gruppe B2}
+\newcommand{\studiengang}{Studiengang Elektrotechnik}
+\newcommand{\vornameStudEins}{Oliver}
+\newcommand{\nachnameStudEins}{Schmidt}
+\newcommand{\matrikelnummerStudEins}{7023462}
+\newcommand{\vornameStudZwei}{Nils}
+\newcommand{\nachnameStudZwei}{Völker}
+\newcommand{\matrikelnummerStudZwei}{7023637}
+\newcommand{\betreuerEins}{Prof. Dr. – Ing. Markus Masur}
+\newcommand{\betreuerZwei}{Dipl.-Ing. (FH) Behrend Pupkes, M.Eng.}
+
+%-------------------------------------------------------------------------------
+% DOKUMENTENBEGINN - Ab hier startet der eigentliche Inhalt
+%-------------------------------------------------------------------------------
+\begin{document}
+
+% Beispielhafter Aufruf für das Hintergrundbild auf allen Seiten
+% \AddToShipoutPicture*{\BackgroundWave}
+
+\include{src/0_1_title}    % Titelseite einbinden
+\newpage
+\include{src/0_2_head_foot} % Kopf- und Fußzeilen-Definitionen einbinden
+% Hier wäre ein guter Ort für \AddToShipoutPicture*{\BackgroundWave},
+% wenn das Logo erst nach/mit der Kopf-/Fußzeile erscheinen soll.
+
+\pagenumbering{Roman}        % Seitennummerierung auf Römisch umstellen
+\include{src/0_3_lists}    % Verzeichnisse einbinden
+% Stellt sicher, dass diese Datei \tableofcontents, \listoffigures,
+% \listoftables, \listof{diagram}{...}, \listof{oszillo}{...} enthält
+\newpage
+%\ClearShipoutPicture
+
+\pagenumbering{arabic}       % Seitennummerierung auf Arabisch umstellen
+\include{src/1_text}
+
+
+% Evtl. Anhang, Literaturverzeichnis, Index hier einbinden
+% \appendix
+% \include{src/anhang}
+% \bibliography{meine_bib_datei}
+% \bibliographystyle{plain}
+\printindex                  % Index ausgeben
+
+\end{document}
