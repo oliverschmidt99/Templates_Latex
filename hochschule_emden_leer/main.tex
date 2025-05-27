@@ -173,6 +173,22 @@
 ]{oszillo}
 
 
+%-------------------------------------------------------------------------------
+% VERZEICHNISSE, REFERENZEN & LINKS
+%-------------------------------------------------------------------------------
+\usepackage{makeidx}        % Zur Erstellung eines Stichwortverzeichnisses (Index)
+                            % -> Nicht vergessen: makeindex nach LaTeX-Lauf ausführen!
+\makeindex                  % Index-Generierung aktivieren
+\usepackage[colorlinks=true,
+            linkcolor=blue,
+            citecolor=green,
+            urlcolor=magenta
+            ]{hyperref}     % Erzeugt klickbare Links im PDF
+                            % -> Sollte i.d.R. als eines der letzten Pakete geladen werden
+\usepackage{chngcntr}       % Zum Ändern der Zähler-Zurücksetzung
+
+\usepackage{etoolbox}       % NEU: Für if-Abfragen (Toggles)
+
 % --- Globale Schalter für Verzeichnisse definieren ---
 \newtoggle{showtoc}         % Für das Inhaltsverzeichnis
 \newtoggle{showtables}      % Für das Tabellenverzeichnis
