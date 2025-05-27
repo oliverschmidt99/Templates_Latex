@@ -172,6 +172,24 @@
     placement = htp
 ]{oszillo}
 
+
+% --- Globale Schalter für Verzeichnisse definieren ---
+\newtoggle{showtoc}         % Für das Inhaltsverzeichnis
+\newtoggle{showtables}      % Für das Tabellenverzeichnis
+\newtoggle{showfigures}     % Für das Abbildungsverzeichnis
+\newtoggle{showoszillos}    % Für das Oszillogrammverzeichnis
+\newtoggle{showdiagrams}    % Für das Diagrammverzeichnis
+
+% --- Setze die Schalter auf true oder false ---
+% true: Verzeichnis wird angezeigt
+% false: Verzeichnis wird nicht angezeigt
+\toggletrue{showtoc}
+\togglefalse{showtables}
+\toggletrue{showfigures}
+\togglefalse{showoszillos} % oder \togglefalse{showoszillos} zum Ausblenden
+\togglefalse{showdiagrams} % oder \togglefalse{showdiagrams} zum Ausblenden
+
+
 %-------------------------------------------------------------------------------
 % GLOBALE DEFINITIONEN
 %-------------------------------------------------------------------------------
