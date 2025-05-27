@@ -1,4 +1,4 @@
-\documentclass[11pt, a4paper]{article} % Dokumentenklasse: Artikel, 11pt Schriftgröße, A4-Papier
+\documentclass[11pt, a4paper]{article}
 
 %-------------------------------------------------------------------------------
 % GRUNDEINSTELLUNGEN: Seitenlayout, Sprache, Kodierung, Schriftart
@@ -8,107 +8,94 @@
             top=0.3cm, bottom=1cm,
             includehead, includefoot,
             headheight=3cm
-            ]{geometry} % Zur Einstellung der Seitengeometrie
-\usepackage[ngerman]{babel} % Deutsche Sprachanpassungen
-\usepackage[T1]{fontenc}    % Wählt die T1-Schriftkodierung
-\usepackage[utf8]{inputenc} % Erlaubt die direkte Eingabe von UTF-8 Zeichen
-\usepackage{lmodern}        % Lädt die Latin Modern Schriftart
-\usepackage{textcomp}       % Stellt zusätzliche Textsymbole bereit
-\usepackage{gensymb}        % Stellt generische Symbole bereit
+            ]{geometry}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{textcomp}
+\usepackage{gensymb}
+
+\makeatletter
+\g@addto@macro\bfseries{\boldmath}
+\makeatother
 
 %-------------------------------------------------------------------------------
 % MATHEMATIK
 %-------------------------------------------------------------------------------
-\usepackage{amsmath}        % Umfassende Erweiterungen für mathematische Formeln
-\usepackage{amssymb}        % Zusätzliche mathematische Symbole
-\usepackage{amsthm}         % Für Theorem-Umgebungen
-\usepackage{latexsym}       % (Oft von amssymb abgedeckt)
-\usepackage{derivative}     % Zum einfachen Setzen von Ableitungen
-% \usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage{derivative}
 
 %-------------------------------------------------------------------------------
 % GRAFIKEN & DIAGRAMME
 %-------------------------------------------------------------------------------
-\usepackage{graphicx}       % Zum Einbinden von externen Grafiken
-\usepackage{tikz}           % Mächtiges Paket zum Erstellen von Vektorgrafiken
-\usepackage{circuitikz}     % Erweiterung für TikZ zum Zeichnen von Schaltplänen
-\usepackage{subcaption}     % Ermöglicht Unterabbildungen und Untertabellen
-\usepackage{caption}        % Zum Anpassen von Abbildungs- und Tabellenbeschriftungen
-\usepackage{adjustbox}      % Zum Anpassen von Boxen
-\usepackage{eso-pic}        % Ermöglicht das Platzieren von Elementen im Hintergrund/Vordergrund
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{tikz}
+\usepackage[european]{circuitikz}
+\usepackage{circuitikz}
+\usepackage{subcaption}
+\usepackage{caption}
+\usepackage{adjustbox}
+\usepackage{eso-pic}
+\usepackage{siunitx}
+\sisetup{locale = DE}
 
 %-------------------------------------------------------------------------------
 % TABELLEN
 %-------------------------------------------------------------------------------
-\usepackage{booktabs}       % Erzeugt optisch ansprechendere Tabellenlinien
-\usepackage{multirow}       % Ermöglicht das Verbinden von Zellen über mehrere Zeilen
-\usepackage{colortbl}       % Ermöglicht das Einfärben von Tabellenzellen
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{colortbl}
 
 %-------------------------------------------------------------------------------
 % LISTEN & AUFZÄHLUNGEN
 %-------------------------------------------------------------------------------
-\usepackage{enumitem}       % Erweiterte Anpassungsmöglichkeiten für Listen
+\usepackage{enumitem}
 
 %-------------------------------------------------------------------------------
 % KOPF-/FUSSZEILE & ABSCHNITTSFORMATIERUNG
 %-------------------------------------------------------------------------------
-\usepackage{fancyhdr}       % Zur Gestaltung von benutzerdefinierten Kopf- und Fußzeilen
-\usepackage{lastpage}       % Stellt die Gesamtseitenzahl des Dokuments zur Verfügung
-\usepackage{sectsty}        % Einfache Möglichkeit zur Änderung der Schriftart von Abschnittsüberschriften
-\usepackage{titlesec}       % Erweiterte Kontrolle über das Aussehen von Abschnittsüberschriften
-\usepackage{titletoc}       % Erweiterte Kontrolle über das Aussehen des Inhaltsverzeichnisses
+\usepackage{fancyhdr}
 \usepackage{lastpage}
+\usepackage{sectsty}
+\usepackage{titlesec}
+\usepackage{titletoc}
 
 %-------------------------------------------------------------------------------
 % VERZEICHNISSE, REFERENZEN & LINKS
 %-------------------------------------------------------------------------------
-\usepackage{makeidx}        % Zur Erstellung eines Stichwortverzeichnisses (Index)
-                            % -> Nicht vergessen: makeindex nach LaTeX-Lauf ausführen!
-\makeindex                  % Index-Generierung aktivieren
+\usepackage{makeidx}
+\makeindex
 \usepackage[colorlinks=true,
             linkcolor=blue,
             citecolor=green,
-            urlcolor=magenta
-            ]{hyperref}     % Erzeugt klickbare Links im PDF
-                            % -> Sollte i.d.R. als eines der letzten Pakete geladen werden
-\usepackage{chngcntr}       % Zum Ändern der Zähler-Zurücksetzung
+            urlcolor=magenta,
+            hidelinks
+            ]{hyperref}
+\usepackage{chngcntr}
 
 %-------------------------------------------------------------------------------
 % SPEZIELLE FORMATIERUNGEN & HILFSPAKETE
 %-------------------------------------------------------------------------------
-\usepackage[normalem]{ulem} % Bietet u.a. durchgestrichenen und unterstrichenen Text
-\usepackage{calc}           % Ermöglicht Berechnungen innerhalb von Längenangaben
-\usepackage{pdfpages}       % Zum Einbinden ganzer Seiten aus externen PDF-Dateien
-\usepackage{blindtext}      % Zum Erzeugen von Blindtext und Beispiel-Dokumentstrukturen
-\usepackage{float}          % Verbesserte Kontrolle über Gleitumgebungen
-\usepackage{newfloat}       % Zum Definieren neuer Gleitumgebungstypen
+\usepackage[normalem]{ulem}
+\usepackage{calc}
+\usepackage{pdfpages}
+\usepackage{blindtext}
+\usepackage{float}
+\usepackage{newfloat}
 
 %-------------------------------------------------------------------------------
-% BENUTZERDEFINIERTE EINSTELLUNGEN & DEFINITIONEN
+% DEFINITIONEN FÜR RAHMEN/BOXEN
 %-------------------------------------------------------------------------------
-
-% Keine Einrückung am Absatzanfang
-\setlength{\parindent}{0em}
-
-% Setzt die Schriftart für alle Abschnittsüberschriften auf serifenlos
-\allsectionsfont{\sffamily}
-
-% Definition des Hintergrundbild-Befehls
-\newcommand\BackgroundWave{%
-    \put(0,0){%
-        \parbox[b][\paperheight]{\paperwidth}{%
-            \vfill %
-            \centering %
-            \vspace{12.0cm} %
-            \includegraphics[width=\paperwidth]{logo/hsel-welle-grey}%
-            \vfill %
-        }%
-    }%
-}
-
 \usepackage{xcolor}
-\usepackage{mdframed}
-% Definiere eine neue mdframed-Umgebung namens 'hinweisbox'
+\usepackage[most]{tcolorbox}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{etoolbox}
+
 \newmdenv[
     linecolor=red,
     linewidth=1pt,
@@ -120,8 +107,57 @@
     roundcorner=2pt,
 ]{hinweisbox}
 
+\newmdenv[
+    linecolor=gray,
+    linewidth=1pt,
+    frametitle=Aufgabe,
+    frametitlebackgroundcolor=white,
+    frametitlefont=\color{black}\bfseries,
+    frametitlerule=true,
+    backgroundcolor=white,
+    roundcorner=2pt,
+]{aufgabenbox}
 
-% Definition neuer Gleitumgebungen
+\newcounter{rechnungbox}[section]
+\renewcommand{\therechnungbox}{\arabic{rechnungbox}}
+
+\newtcolorbox{rechnungbox}[1][]{%
+  colframe=darkgray,
+  colback=white,
+  coltitle=white,
+  colbacktitle=gray,
+  title={Rechnung \therechnungbox},
+  fonttitle=\bfseries,
+  boxed title style={size=small},
+  boxrule=1pt,
+  sharp corners=south,
+  before upper=\stepcounter{rechnungbox},
+  #1
+}
+
+\newenvironment{mysection}{}{}
+\newenvironment{mysubsection}{}{}
+\newenvironment{mysubsubsection}{}{}
+\newenvironment{mysubsubsubsection}{}{} 
+
+%-------------------------------------------------------------------------------
+% BENUTZERDEFINIERTE EINSTELLUNGEN & DEFINITIONEN
+%-------------------------------------------------------------------------------
+\setlength{\parindent}{0em}
+\allsectionsfont{\sffamily}
+
+\newcommand\BackgroundWave{%
+    \put(0,0){%
+        \parbox[b][\paperheight]{\paperwidth}{%
+            \vfill
+            \centering
+            \vspace{12.0cm}
+            \includegraphics[width=\paperwidth]{logo/hsel-welle-grey}%
+            \vfill
+        }%
+    }%
+}
+
 \DeclareFloatingEnvironment[
     listname  = {Diagrammverzeichnis},
     name      = Diagramm,
@@ -139,24 +175,26 @@
 %-------------------------------------------------------------------------------
 % GLOBALE DEFINITIONEN
 %-------------------------------------------------------------------------------
-\newcommand{\praktikumstitel}{Praktikumstitel} %
-\newcommand{\semester}{Semester X} %
-\newcommand{\versuchsnummer}{\ } %
-\newcommand{\versuchstitel}{Versuchstitel } %
-\newcommand{\gruppe}{\ } %
+\newcommand{\praktikumstitel}{Elektrische Antriebe – Praktikum\\
+Sommersemester 2025}
+\newcommand{\semester}{Semester 6}
+\newcommand{\versuchsnummer}{Versuch 4}
+\newcommand{\versuchstitel}{Synchronmaschine und Schrittmotor}
+\newcommand{\gruppe}{Gruppe B2}
 \newcommand{\studiengang}{Studiengang Elektrotechnik}
-\newcommand{\vornameStudEins}{Oliver}
-\newcommand{\nachnameStudEins}{Schmidt}
-\newcommand{\matrikelnummerStudEins}{7023462}
-\newcommand{\vornameStudZwei}{\ } %
-\newcommand{\nachnameStudZwei}{\ } %
-\newcommand{\matrikelnummerStudZwei}{\ } %
-\newcommand{\betreuerEins}{\ } %
-\newcommand{\betreuerZwei}{\ } %
+\newcommand{\vornameStudEins}{Nils}
+\newcommand{\nachnameStudEins}{Völker}
+\newcommand{\matrikelnummerStudEins}{7023637}
+\newcommand{\vornameStudZwei}{Oliver}
+\newcommand{\nachnameStudZwei}{Schmidt}
+\newcommand{\matrikelnummerStudZwei}{7023462}
+\newcommand{\betreuerEins}{Prof. Dr. – Ing. Markus Masur}
+\newcommand{\betreuerZwei}{Dipl.-Ing. (FH) Behrend Pupkes, M.Eng.}
 
 %-------------------------------------------------------------------------------
-% DOKUMENTENBEGINN - Ab hier startet der eigentliche Inhalt
+% DOKUMENTENBEGINN
 %-------------------------------------------------------------------------------
+
 \begin{document}
 
 % Beispielhafter Aufruf für das Hintergrundbild auf allen Seiten
